@@ -1,21 +1,24 @@
 /* Desarrollar un programa que permita almacenar 9 nombres de artículos en una matriz 
 llamada “artículos”, posteriormente deberá mostrar el contenido de matriz en el orden 
-de las filas invertido, es decir, la última fila debe aparecer primero y la primera de último. */ 
+de las filas invertido, es decir, la última fila debe aparecer primero y la primera de último. */
+
+import java.util.Scanner;
 
 public class Ejercicio5 {
     public static void main(String[] args) {
-        String[][] articulos = new String[3][3]; // Matriz de 3x3 para almacenar 9 artículos
+        Scanner sc = new Scanner(System.in);
+        String[][] articulos = new String[3][3];
 
-        // Llenar la matriz con nombres de artículos
-        for (int i = 0; i < articulos.length; i++) {
-            for (int j = 0; j < articulos[i].length; j++) {
-                articulos[i][j] = "Artículo " + (i * articulos[i].length + j + 1);
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print("Ingrese artículo en fila " + i + ", columna " + j + ": ");
+                articulos[i][j] = sc.nextLine();
             }
         }
 
-        // Mostrar el contenido de la matriz en orden invertido
-        for (int i = articulos.length - 1; i >= 0; i--) {
-            for (int j = 0; j < articulos[i].length; j++) {
+        System.out.println("\nMatriz con filas invertidas:");
+        for (int i = 2; i >= 0; i--) {
+            for (int j = 0; j < 3; j++) {
                 System.out.print(articulos[i][j] + " ");
             }
             System.out.println();

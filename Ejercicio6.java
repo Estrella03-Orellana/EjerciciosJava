@@ -1,40 +1,26 @@
 /*  Desarrollar un programa que permita almacenar 9 valores numéricos cualquiera 
-en una matriz y que posteriormente muestre su transpuesta. */ 
+en una matriz y que posteriormente muestre su transpuesta. */
+
+import java.util.Scanner;
 
 public class Ejercicio6 {
 
     public static void main(String[] args) {
-        int[][] matriz = new int[3][3]; // Matriz de 3x3 para almacenar 9 valores numéricos
+         Scanner sc = new Scanner(System.in);
+        int[][] matriz = new int[3][3];
 
-        // Llenar la matriz con números aleatorios
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                matriz[i][j] = (int) (Math.random() * 100); // Genera números aleatorios entre 0 y 99
+        System.out.println("Ingrese los valores de la matriz 3x3:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print("Elemento [" + i + "][" + j + "]: ");
+                matriz[i][j] = sc.nextInt();
             }
         }
 
-        // Mostrar la matriz original
-        System.out.println("Matriz original:");
-        mostrarMatriz(matriz);
-
-        // Calcular y mostrar la transpuesta
-        System.out.println("Matriz transpuesta:");
-        mostrarTranspuesta(matriz);
-    }
-
-    private static void mostrarMatriz(int[][] matriz) {
-        for (int[] fila : matriz) {
-            for (int valor : fila) {
-                System.out.print(valor + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    private static void mostrarTranspuesta(int[][] matriz) {
-        for (int j = 0; j < matriz[0].length; j++) {
-            for (int i = 0; i < matriz.length; i++) {
-                System.out.print(matriz[i][j] + " ");
+        System.out.println("\nMatriz transpuesta:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(matriz[j][i] + " ");
             }
             System.out.println();
         }

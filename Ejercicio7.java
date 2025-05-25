@@ -1,71 +1,50 @@
 /* Desarrollar un programa que permita almacenar 12 valores numéricos cualquiera 
 en una matriz y como resultado deberá mostrar si existe algún “punto de silla” y 
-el número donde se presenta. */ 
+el número donde se presenta. */
+
+import java.util.Scanner;
 
 public class Ejercicio7 {
 
     public static void main(String[] args) {
-        int[][] matriz = new int[3][4]; // Matriz de 3x4 para almacenar 12 valores numéricos
+        Scanner sc = new Scanner(System.in);
+        int[][] matriz = new int[3][4];
 
-        // Llenar la matriz con números aleatorios
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                matriz[i][j] = (int) (Math.random() * 100); // Genera números aleatorios entre 0 y 99
+        System.out.println("Ingrese los valores de la matriz 3x4:");
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 4; j++) {
+                System.out.print("Elemento [" + i + "][" + j + "]: ");
+                matriz[i][j] = sc.nextInt();
             }
         }
 
-        // Mostrar la matriz original
-        System.out.println("Matriz original:");
-        mostrarMatriz(matriz);
-
-        // Buscar puntos de silla
-        buscarPuntosDeSilla(matriz);
-    }
-
-    private static void mostrarMatriz(int[][] matriz) {
-        for (int[] fila : matriz) {
-            for (int valor : fila) {
-                System.out.print(valor + " ");
+        boolean existe = false;
+        for (int i = 0; i < 3; i++) {
+            int minFila = matriz[i][0];
+            int colMin = 0;
+            for (int j = 1; j < 4; j++) {
+                if (matriz[i][j] < minFila) {
+                    minFila = matriz[i][j];
+                    colMin = j;
+                }
             }
-            System.out.println();
-        }
-    }
 
-    private static void buscarPuntosDeSilla(int[][] matriz) {
-        boolean encontrado = false;
-
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                int valorActual = matriz[i][j];
-                boolean esMinimoFila = true;
-                boolean esMaximoColumna = true;
-
-                // Verificar si es el mínimo en su fila
-                for (int k = 0; k < matriz[i].length; k++) {
-                    if (matriz[i][k] < valorActual) {
-                        esMinimoFila = false;
-                        break;
-                    }
+            boolean esMayorColumna = true;
+            for (int k = 0; k < 3; k++) {
+                if (matriz[k][colMin] > minFila) {
+                    esMayorColumna = false;
+                    break;
                 }
+            }
 
-                // Verificar si es el máximo en su columna
-                for (int k = 0; k < matriz.length; k++) {
-                    if (matriz[k][j] > valorActual) {
-                        esMaximoColumna = false;
-                        break;
-                    }
-                }
-
-                // Si es un punto de silla, mostrarlo
-                if (esMinimoFila && esMaximoColumna) {
-                    System.out.println("Punto de silla encontrado: " + valorActual + " en posición (" + i + ", " + j + ")");
-                    encontrado = true;
-                }
+            if (esMayorColumna) {
+                System.out.println("Punto de silla encontrado: " + minFila);
+                existe = true;
             }
         }
 
-        if (!encontrado) {
-            System.out.println("No se encontraron puntos de silla en la matriz.");
+        if (!existe) {
+            System.out.println("No hay punto de silla en la matriz.");
         }
     }
 }
