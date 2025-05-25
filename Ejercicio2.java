@@ -2,22 +2,24 @@
 en un vector llamado “números” y que posteriormente muestre el
 promedio de los números ingresados. */
 
+import java.util.Scanner;
+
 public class Ejercicio2 {
 
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
         int[] numeros = new int[12];
         int suma = 0;
 
-        // Llenar el vector con números enteros
         for (int i = 0; i < numeros.length; i++) {
-            numeros[i] = (int) (Math.random() * 100); // Genera números aleatorios entre 0 y 99
+            System.out.print("Ingrese número " + (i + 1) + ": ");
+            numeros[i] = sc.nextInt();
             suma += numeros[i];
         }
 
-        // Calcular el promedio
         double promedio = (double) suma / numeros.length;
-
-        // Mostrar el promedio
-        System.out.println("El promedio de los números ingresados es: " + promedio);
+        System.out.println("Promedio: " + promedio);
     }
-}
+    
+    }
+
