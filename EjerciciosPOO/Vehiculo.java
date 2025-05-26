@@ -4,26 +4,27 @@ derivadas de ésta: Automóvil, Barco y Avión; las clases derivadas deberán so
 
 package EjerciciosPOO;
 public class Vehiculo {
-    private String marca;
-    private String modelo;
-    private int anio;
+    protected String nombre;
+    protected int velocidadMaxima;
 
-    public Vehiculo(String marca, String modelo, int anio) {
-        this.marca = marca;
-        this.modelo = modelo;
-        this.anio = anio;
+    public Vehiculo(String nombre, int velocidadMaxima) {
+        this.nombre = nombre;
+        this.velocidadMaxima = velocidadMaxima;
     }
 
-    public void mostrarInformacion() {
-        System.out.println("Marca: " + marca);
-        System.out.println("Modelo: " + modelo);
-        System.out.println("Año: " + anio);
+    public void mover() {
+        System.out.println("El " + nombre + " se está moviendo.");
     }
 
-    public void tipoVehiculo() {
-        System.out.println("Este es un vehículo genérico.");
+    public void mostrarInfo() {
+        System.out.println("--- Información del Vehículo ---");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Velocidad Máxima: " + velocidadMaxima + " km/h");
     }
 
-    
+    // Método que será sobrescrito por las clases derivadas
+    public void realizarAccionEspecifica() {
+        System.out.println("El " + nombre + " realiza una acción genérica.");
+    }
 }
 
