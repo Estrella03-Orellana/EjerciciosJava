@@ -4,10 +4,12 @@ import EjerciciosPOO.Nivel2;
 import EjerciciosPOO.Vehiculo;
 import EjerciciosPOO.Automovil;
 import EjerciciosPOO.Barco;
+import EjerciciosPOO.Doctor;
 import EjerciciosPOO.Empleado;
+import EjerciciosPOO.Ingeniero;
 import EjerciciosPOO.Avion;
 import EjerciciosPOO.Persona;
-import EjerciciosPOO.Empleado;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -110,6 +112,20 @@ public class Main {
             // Llama a la implementación específica de calcularSueldo() del objeto Empleado
             System.out.println("Sueldo Final (Polimorfismo): $" + p.calcularSueldo());
         }
+
+        // Ejercicio 5 POO Crear instancias de la clase Persona y mostrar su información
+        System.out.println("*****************EJERCICIO 5 *****************");
+        Doctor doctorJuan = new Doctor("Juan Pérez", "Pediatría", 50.0);
+        Ingeniero ingenieroAna = new Ingeniero("Ana López", "Software", 3000.0, 500.0);
+
+        // El doctor registra algunas horas de trabajo
+        doctorJuan.registrarHoras(160); // 160 horas en el mes (40 por semana * 4 semanas)
+
+        // Mostrar información y calcular sueldo de cada uno
+        doctorJuan.mostrarInfo();
+        ingenieroAna.mostrarInfo();
+
+        System.out.println("\n--- Cálculo de Sueldos (Polimorfismo con Interfaz) ---");
 
         
     }
